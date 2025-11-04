@@ -4,7 +4,36 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contact - JKagiDesigns LLC</title>
+        <title>Contact Us - Get IT Support & Free Consultation | JKagiDesigns LLC</title>
+
+        <!-- SEO Meta Tags -->
+        <meta name="description"
+            content="Contact JKagiDesigns LLC for professional IT support, web development, and software development services. Free consultation available. Call (555) 123-4567 or send a message.">
+        <meta name="keywords"
+            content="contact IT support, IT consultation, web development quote, software development inquiry, computer repair contact, IT services contact form">
+        <meta name="author" content="JKagiDesigns LLC">
+        <meta name="robots" content="index, follow">
+
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Contact JKagiDesigns LLC - IT Support & Consultation">
+        <meta property="og:description"
+            content="Get in touch for professional IT support, web development, and software services. Free consultation available. Expert technology solutions for your business.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.jkagidesigns.com/contact.html">
+        <meta property="og:image" content="https://www.jkagidesigns.com/assets/images/IconOnly_Transparent.png">
+
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="Contact JKagiDesigns LLC - IT Support & Consultation">
+        <meta name="twitter:description"
+            content="Get in touch for professional IT support, web development, and software services. Free consultation available.">
+
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://www.jkagidesigns.com/contact.html">
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="assets/images/IconOnly_Transparent.png">
+
         <link rel="stylesheet" href="styles.css">
     </head>
 
@@ -46,8 +75,14 @@
                     <!-- Contact Form -->
                     <div class="contact-form-wrapper">
                         <h2>Send Us a Message</h2>
-                        <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID"
+                        <form id="contactForm" class="contact-form" action="https://formsubmit.co/info@jkagidesigns.com"
                             method="POST">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_subject" value="New Contact Form Submission - JKagiDesigns LLC">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="text" name="_honey" style="display:none">
+
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
                                 <input type="text" id="name" name="name" required>
@@ -98,9 +133,6 @@
                                 <label for="message">Project Details *</label>
                                 <textarea id="message" name="message" rows="6" required></textarea>
                             </div>
-
-                            <!-- Honeypot field for spam protection -->
-                            <input type="text" name="_gotcha" style="display:none !important">
 
                             <button type="submit" class="btn btn-primary">Send Message</button>
 

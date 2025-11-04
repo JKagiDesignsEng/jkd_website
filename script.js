@@ -101,56 +101,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Contact form handling with Formspree
+    // Contact form handling with FormSubmit
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const formMessage = document.getElementById('formMessage');
-            const formData = new FormData(contactForm);
-            
+        contactForm.addEventListener('submit', function(e) {
             // Show loading state
+            const formMessage = document.getElementById('formMessage');
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
+            
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            try {
-                // Submit to Formspree
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    // Show success message
-                    formMessage.textContent = 'Thank you for your message! We will get back to you within 24 hours.';
-                    formMessage.className = 'form-message success';
-                    
-                    // Reset form
-                    contactForm.reset();
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                // Show error message
-                formMessage.textContent = 'Sorry, there was an error sending your message. Please try again or email us directly.';
-                formMessage.className = 'form-message error';
-            }
+            formMessage.textContent = 'Sending your message...';
+            formMessage.className = 'form-message';
             
-            // Reset button
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                formMessage.className = 'form-message';
-            }, 5000);
+            // FormSubmit will handle the actual submission and redirect
+            // This is just for user feedback before the redirect happens
         });
     }
 

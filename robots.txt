@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.jkagidesigns.com/sitemap.xml
+
+# Crawl-delay for all bots
+Crawl-delay: 1
+
+# Block access to sensitive files and directories
+Disallow: /assets/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /node_modules/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /*.md$
+
+# Allow specific asset types that are important for SEO
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
