@@ -46,7 +46,8 @@
                     <!-- Contact Form -->
                     <div class="contact-form-wrapper">
                         <h2>Send Us a Message</h2>
-                        <form id="contactForm" class="contact-form">
+                        <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID"
+                            method="POST">
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
                                 <input type="text" id="name" name="name" required>
@@ -71,12 +72,11 @@
                                 <label for="service">Service Interested In</label>
                                 <select id="service" name="service">
                                     <option value="">Select a service</option>
-                                    <option value="web-development">Web Development</option>
-                                    <option value="mobile-apps">Mobile Apps</option>
-                                    <option value="cloud-solutions">Cloud Solutions</option>
-                                    <option value="cybersecurity">Cybersecurity</option>
-                                    <option value="data-analytics">Data Analytics</option>
-                                    <option value="ai-automation">AI & Automation</option>
+                                    <option value="website-development">Website Development</option>
+                                    <option value="software-development">Software Development</option>
+                                    <option value="computer-it-services">Computer & IT Services</option>
+                                    <option value="it-support-membership">IT Support Membership</option>
+                                    <option value="consultation">General Consultation</option>
                                     <option value="other">Other</option>
                                 </select>
                             </div>
@@ -85,11 +85,12 @@
                                 <label for="budget">Estimated Budget</label>
                                 <select id="budget" name="budget">
                                     <option value="">Select budget range</option>
-                                    <option value="under-1k">Under $1,000</option>
+                                    <option value="under-500">Under $500</option>
+                                    <option value="500-1k">$500 - $1,000</option>
                                     <option value="1k-5k">$1,000 - $5,000</option>
-                                    <option value="5k-10k">$5,000 - $10,000</option>
-                                    <option value="10k-25k">$10,000 - $25,000</option>
-                                    <option value="25k-plus">$25,000+</option>
+                                    <option value="5k-15k">$5,000 - $15,000</option>
+                                    <option value="15k-plus">$15,000+</option>
+                                    <option value="membership">Membership ($299/year)</option>
                                 </select>
                             </div>
 
@@ -97,6 +98,9 @@
                                 <label for="message">Project Details *</label>
                                 <textarea id="message" name="message" rows="6" required></textarea>
                             </div>
+
+                            <!-- Honeypot field for spam protection -->
+                            <input type="text" name="_gotcha" style="display:none !important">
 
                             <button type="submit" class="btn btn-primary">Send Message</button>
 

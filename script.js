@@ -101,21 +101,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Contact form handling
+    // Contact form handling with Formspree
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const formMessage = document.getElementById('formMessage');
             const formData = new FormData(contactForm);
-            
-            // Simulate form submission (since we don't have a backend)
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
             
             // Show loading state
             const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -123,27 +117,40 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Simulate API call
+            try {
+                // Submit to Formspree
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    formMessage.textContent = 'Thank you for your message! We will get back to you within 24 hours.';
+                    formMessage.className = 'form-message success';
+                    
+                    // Reset form
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Show error message
+                formMessage.textContent = 'Sorry, there was an error sending your message. Please try again or email us directly.';
+                formMessage.className = 'form-message error';
+            }
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+            
+            // Hide message after 5 seconds
             setTimeout(() => {
-                // In a real application, you would send this to a server
-                console.log('Form data:', data);
-                
-                // Show success message
-                formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
-                formMessage.className = 'form-message success';
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Reset button
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formMessage.className = 'form-message';
-                }, 5000);
-            }, 1500);
+                formMessage.className = 'form-message';
+            }, 5000);
         });
     }
 
